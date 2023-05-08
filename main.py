@@ -11,13 +11,13 @@ def main():
     programWindow = w.windowTk
     programWindow.title(w.windowTitle)
     programWindow.iconbitmap(w.windowIcon)
-    programWindow.geometry(w.windowGeometry)
-
-# Creating Tabs
+    w.centerProgramWindow()
+    
+# Calling a method for tab creation
 
     w.createTabs()
     
-# Main tab layout
+# Calling a method for main tab layout creation
 
     w.mainTabElements()
 
