@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 
+
 class Window:
 
     windowTitle : str
@@ -118,3 +119,29 @@ class Window:
 
         exitButton = Button(self.tabMain,text="Exit program", command=self.windowTk.quit,bg=self.buttonsColor,width=15,font=("Arial",10))
         exitButton.grid(column=2,row=3,pady=(0,10),padx=(95,0))
+
+    def settingsTabElements(self):
+
+    # Label for settings tab
+
+        settingsLabel = Label(self.tabSettings,text="Settings",font=("Arial",18),bg=self.bgColor) 
+        settingsLabel.grid(row=0,column=0,padx=(15,0),pady=(15,15))
+
+    # Label for theme change option
+        
+        themeOption = Label(self.tabSettings,text="Theme",font=("Arial",12),bg=self.bgColor)
+        themeOption.grid(row=1,column=0)
+
+    # dropdown menu for theme selection
+
+        dropdownOption = StringVar()
+        options = [
+
+            "Default",
+            "Midnight blue & Daisy bush",
+            "Alice blue & Rock blue",
+            "Laurel & Norway"
+        ]
+        dropdownOption.set(options[0])
+        themeDropdown = OptionMenu(self.tabSettings,dropdownOption, *options) 
+        themeDropdown.grid(column=1,row=1,padx=(15,0))   

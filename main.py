@@ -1,6 +1,4 @@
 from modules.WindowClass import *
-from modules.DriverClass import *
-
 
 
 def main():
@@ -20,6 +18,10 @@ def main():
 # Calling a method for main tab layout creation
 
     w.mainTabElements()
+
+# Calling a method for settings tab layout creation
+
+    w.settingsTabElements()
 
     programWindow.mainloop()
     
