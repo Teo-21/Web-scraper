@@ -15,17 +15,19 @@ class Window:
     tabAbout : object
     bgColor : str
     buttonsColor : str
+    frameColor : str
     
-    def __init__(self):
+    def __init__(self,bg="#B0DAFF",btnColor="#FEFF86",frameColor="#19A7CE",windowInit= Tk()):
 
         self.windowTitle = "WEB SCRAPER v0.6.0"
         self.windowIcon = "icons/web_icon.ico"
-        self.windowTk = Tk()
+        self.windowTk = windowInit
         self.windowWidth = 760
         self.windowHeight = 380
         self.tabs = ttk.Notebook(self.windowTk)
-        self.bgColor = "#B0DAFF"
-        self.buttonsColor = "#FEFF86"
+        self.bgColor = bg
+        self.buttonsColor = btnColor
+        self.frameColor = frameColor
         self.tabMain = Frame(self.tabs,bg= self.bgColor)
         self.tabSettings = Frame(self.tabs,bg= self.bgColor)
         self.tabAbout = Frame(self.tabs,bg= self.bgColor)
@@ -56,7 +58,7 @@ class Window:
 
     # Creating frame number one
         
-        mainFrameOne = Frame(self.tabMain,width=210,height=230,bg="#19A7CE")
+        mainFrameOne = Frame(self.tabMain,width=210,height=230,bg=self.frameColor)
         mainFrameOne.grid(row=1,column=0,pady=(0,30))
         mainFrameOne.grid_propagate(FALSE)
 
@@ -74,7 +76,7 @@ class Window:
 
     # Creating frame number two
         
-        mainFrameTwo = Frame(self.tabMain,width=210,height=230,bg="#19A7CE")
+        mainFrameTwo = Frame(self.tabMain,width=210,height=230,bg=self.frameColor)
         mainFrameTwo.grid(row=1,column=1,pady=(0,30))
         mainFrameTwo.grid_propagate(FALSE)
 
@@ -93,7 +95,7 @@ class Window:
 
     # Creating frame number three
 
-        mainFrameThree = Frame(self.tabMain,width=210,height=230,bg="#19A7CE")
+        mainFrameThree = Frame(self.tabMain,width=210,height=230,bg=self.frameColor)
         mainFrameThree.grid(row=1,column=2,pady=(0,30),padx=(30,40))
         mainFrameThree.grid_propagate(FALSE)
 
@@ -120,7 +122,22 @@ class Window:
         exitButton = Button(self.tabMain,text="Exit program", command=self.windowTk.quit,bg=self.buttonsColor,width=15,font=("Arial",10))
         exitButton.grid(column=2,row=3,pady=(0,10),padx=(95,0))
 
-    def settingsTabElements(self):
+    @staticmethod
+    def changeTheme(theme):
+        print(theme)
+        if theme == "Default":
+            bgNewColor = "#B0DAFF"
+            btnNewColor = "#FEFF86"
+            frameNewColor = "#19A7CE"
+            return bgNewColor,btnNewColor,frameNewColor
+        
+        elif theme == "Midnight blue & Daisy bush":
+            bgNewColor = "#1D267D"
+            btnNewColor = "#5C469C"
+            frameNewColor = "#D4ADFC"
+            return bgNewColor,btnNewColor,frameNewColor
+
+    def settingsTabElements(self,dropdownOption,options):
 
     # Label for settings tab
 
@@ -132,16 +149,8 @@ class Window:
         themeOption = Label(self.tabSettings,text="Theme",font=("Arial",12),bg=self.bgColor)
         themeOption.grid(row=1,column=0)
 
-    # dropdown menu for theme selection
+  
+    # Rest of dropdown menu creation (dropdown option variable is relocated in main.py)
 
-        dropdownOption = StringVar()
-        options = [
-
-            "Default",
-            "Midnight blue & Daisy bush",
-            "Alice blue & Rock blue",
-            "Laurel & Norway"
-        ]
-        dropdownOption.set(options[0])
-        themeDropdown = OptionMenu(self.tabSettings,dropdownOption, *options) 
+        themeDropdown = OptionMenu(self.tabSettings,dropdownOption, *options,command=Window.changeTheme) 
         themeDropdown.grid(column=1,row=1,padx=(15,0))   
