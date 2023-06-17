@@ -1,6 +1,7 @@
 from modules.WindowClass import *
 
 
+
 def main():
 
 # Window initialization and theme changing functionality
@@ -9,35 +10,19 @@ def main():
     programWindow = w.windowTk
     programWindow.title(w.windowTitle)
     programWindow.iconbitmap(w.windowIcon)
-    w.centerProgramWindow()
-    dropdownOption = StringVar()
-    options = [
-
-        "Default",
-        "Midnight blue & Daisy bush",
-        "Alice blue & Rock blue",
-        "Laurel & Norway"
-    ]
-   # Default window theme initialization
-
-    dropdownOption.set(options[1])
-    bg,btn,frame = Window.changeTheme(dropdownOption.get())
-    print(bg,btn,frame)
-
-    
-    themeChanger = Window(bg,btn,frame)
-        
-# Calling a method for tab creation
-
-    themeChanger.createTabs()
+    w.centerProgramWindow()   
+    w.createTabs()
     
 # Calling a method for main tab layout creation
 
-    themeChanger.mainTabElements()
+    w.mainTabElements()
 
-# Calling a method for settings tab layout creation
 
-    themeChanger.settingsTabElements(dropdownOption,options)
+# calling a method for about tab creation
+
+    w.aboutTabElements()
+
+# window main loop 
 
     programWindow.mainloop()
     

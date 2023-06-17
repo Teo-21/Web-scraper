@@ -1,7 +1,7 @@
 <h1>Web scraper</h1>
 
 <p>
-Web scraper is a little program which sole purpose is to scrape data from website that have information about apartments for rent in Belgrade and store all of that data in csv file or database. All possibilities will be thought out further so this program can be of some use to its users.  
+Web scraper is a little program which sole purpose is to scrape data from a website that have information about apartments for rent in Belgrade and store all of that data in csv file or database. All possibilities will be thought out further so this program can be of some use to its users.  
 </p>
 <p>
     This project is in start up phase and it will be updated gradually part by part. 

@@ -1,8 +1,10 @@
 from tkinter import *
 from tkinter import ttk
+import tkinter as tk
+from modules.DataClass import *
 
 
-class Window:
+class Window(Data):
 
     windowTitle : str
     windowIcon : str
@@ -11,7 +13,6 @@ class Window:
     windowTk : object
     tabs : object
     tabMain : object
-    tabSettings : object
     tabAbout : object
     bgColor : str
     buttonsColor : str
@@ -29,7 +30,6 @@ class Window:
         self.buttonsColor = btnColor
         self.frameColor = frameColor
         self.tabMain = Frame(self.tabs,bg= self.bgColor)
-        self.tabSettings = Frame(self.tabs,bg= self.bgColor)
         self.tabAbout = Frame(self.tabs,bg= self.bgColor)
 
     def centerProgramWindow(self):
@@ -44,7 +44,6 @@ class Window:
     def createTabs(self):
 
         self.tabs.add(self.tabMain,text='Main') 
-        self.tabs.add(self.tabSettings,text='Settings')
         self.tabs.add(self.tabAbout,text='About')
         self.tabs.pack(expand=1, fill='both')
 
@@ -71,7 +70,7 @@ class Window:
 
     # Creating a button for frame number one
         
-        scrapeData = Button(mainFrameOne,width=15,text="Scrape data",font=("Arial",10),bg=self.buttonsColor,cursor="spider")
+        scrapeData = Button(mainFrameOne,width=15,text="Scrape data",font=("Arial",10),bg=self.buttonsColor)
         scrapeData.grid(column=1,row=3)
 
     # Creating frame number two
@@ -90,7 +89,7 @@ class Window:
 
     # Creating a button for frame number two    
 
-        csvOption = Button(mainFrameTwo,width=15,text="Create CSV file",font=("Arial",10),bg=self.buttonsColor,cursor="spider")
+        csvOption = Button(mainFrameTwo,width=15,text="Create CSV file",font=("Arial",10),bg=self.buttonsColor)
         csvOption.grid(column=1,row=3)
 
     # Creating frame number three
@@ -109,7 +108,7 @@ class Window:
 
     # Creating a button for frame number three    
 
-        databaseOption = Button(mainFrameThree,width=15,text="Store in database",font=("Arial",10),bg=self.buttonsColor,cursor="spider")
+        databaseOption = Button(mainFrameThree,width=15,text="Store in database",font=("Arial",10),bg=self.buttonsColor)
         databaseOption.grid(column=1,row=3)
 
     # Copy right label creation    
@@ -122,35 +121,16 @@ class Window:
         exitButton = Button(self.tabMain,text="Exit program", command=self.windowTk.quit,bg=self.buttonsColor,width=15,font=("Arial",10))
         exitButton.grid(column=2,row=3,pady=(0,10),padx=(95,0))
 
-    @staticmethod
-    def changeTheme(theme):
-        print(theme)
-        if theme == "Default":
-            bgNewColor = "#B0DAFF"
-            btnNewColor = "#FEFF86"
-            frameNewColor = "#19A7CE"
-            return bgNewColor,btnNewColor,frameNewColor
-        
-        elif theme == "Midnight blue & Daisy bush":
-            bgNewColor = "#1D267D"
-            btnNewColor = "#5C469C"
-            frameNewColor = "#D4ADFC"
-            return bgNewColor,btnNewColor,frameNewColor
 
-    def settingsTabElements(self,dropdownOption,options):
+    def aboutTabElements(self):
+        aboutTabLabel = Label(self.tabAbout,text="About WEB SCRAPER Software",bg=self.bgColor,font=("Arial",18))
+        aboutTabLabel.grid(column=0,row=0,padx=(15,0),pady=(15,15))    
 
-    # Label for settings tab
+        aboutTabText = Text(self.tabAbout,bg=self.bgColor,font=("Arial",11),width=62)
+        # text = self.readFromREADME()
+        text = "To be continued...I need to research how to strip markdown file so I can have plain text to display in here..."
+        aboutTabText.insert(tk.END, text)
+        aboutTabText.config(state=DISABLED)
+        aboutTabText.grid(column=0,row=2)   
 
-        settingsLabel = Label(self.tabSettings,text="Settings",font=("Arial",18),bg=self.bgColor) 
-        settingsLabel.grid(row=0,column=0,padx=(15,0),pady=(15,15))
-
-    # Label for theme change option
-        
-        themeOption = Label(self.tabSettings,text="Theme",font=("Arial",12),bg=self.bgColor)
-        themeOption.grid(row=1,column=0)
-
-  
-    # Rest of dropdown menu creation (dropdown option variable is relocated in main.py)
-
-        themeDropdown = OptionMenu(self.tabSettings,dropdownOption, *options,command=Window.changeTheme) 
-        themeDropdown.grid(column=1,row=1,padx=(15,0))   
+    
