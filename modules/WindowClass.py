@@ -123,14 +123,14 @@ class Window(Data):
 
 
     def aboutTabElements(self):
-        aboutTabLabel = Label(self.tabAbout,text="About WEB SCRAPER Software",bg=self.bgColor,font=("Arial",18))
-        aboutTabLabel.grid(column=0,row=0,padx=(15,0),pady=(15,15))    
+        # aboutTabLabel = Label(self.tabAbout,text="About WEB SCRAPER Software",bg=self.bgColor,font=("Arial",18))
+        # aboutTabLabel.grid(column=0,row=0,padx=(15,0),pady=(15,15))    
 
-        aboutTabText = Text(self.tabAbout,bg=self.bgColor,font=("Arial",11),width=62)
-        # text = self.readFromREADME()
-        text = "To be continued...I need to research how to strip markdown file so I can have plain text to display in here..."
+        aboutTabText = Text(self.tabAbout,bg=self.buttonsColor,font=("Arial",11),width=71,height=22,padx=15,pady=5)
+        text = self.readFromREADME()
+        # text = "To be continued...I need to research how to strip markdown file so I can have plain text to display in here..."
         aboutTabText.insert(tk.END, text)
         aboutTabText.config(state=DISABLED)
-        aboutTabText.grid(column=0,row=2)   
+        aboutTabText.grid(column=0,row=0,padx=(25,25))   
 
     

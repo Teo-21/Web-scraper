@@ -1,8 +1,6 @@
-import os.path
-from markdown import Markdown
-from io import StringIO
+import markdown
+from bs4 import BeautifulSoup
 
-# markdown and io imports are for markdown file stripping, which will be done soon hopefully
 
 class Data:
 
@@ -14,8 +12,9 @@ class Data:
 
     def readFromREADME(self):
 
-        readmeFile = open("README.md","r")
-        self.fileData = readmeFile.read()
-        readmeFile.close()
-        return self.fileData
+        readmeFile = markdown.markdown(open("README.md").read())
+        fileContent = BeautifulSoup(readmeFile,"html.parser")
+        readmeContent = "".join(fileContent.findAll(text = True))
+        return readmeContent
+
 
