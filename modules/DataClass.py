@@ -4,8 +4,6 @@ from bs4 import BeautifulSoup
 
 class Data:
 
-    fileData : str
-
 
     def __init__(self):
         pass

@@ -2,9 +2,10 @@ from tkinter import *
 from tkinter import ttk
 import tkinter as tk
 from modules.DataClass import *
+from modules.DriverClass import *
 
 
-class Window(Data):
+class Window(Data,Driver):
 
     windowTitle : str
     windowIcon : str
@@ -17,10 +18,11 @@ class Window(Data):
     bgColor : str
     buttonsColor : str
     frameColor : str
-    
-    def __init__(self,bg="#B0DAFF",btnColor="#FEFF86",frameColor="#19A7CE",windowInit= Tk()):
 
-        self.windowTitle = "WEB SCRAPER v0.6.0"
+    
+    def __init__(self,bg="#931A25",btnColor="#F5EFEF",frameColor="#FFCB8E",windowInit= Tk()):
+
+        self.windowTitle = "WEB SCRAPER v0.8.0"
         self.windowIcon = "icons/web_icon.ico"
         self.windowTk = windowInit
         self.windowWidth = 760
@@ -31,6 +33,7 @@ class Window(Data):
         self.frameColor = frameColor
         self.tabMain = Frame(self.tabs,bg= self.bgColor)
         self.tabAbout = Frame(self.tabs,bg= self.bgColor)
+        # Driver.__init__(self)
 
     def centerProgramWindow(self):
 
@@ -51,7 +54,7 @@ class Window(Data):
 
     # Creating label for main tab
     
-        mainTabLabel = Label(self.tabMain,text="WEB SCRAPER v0.6.0",font=("Arial",18),bg=self.bgColor)
+        mainTabLabel = Label(self.tabMain,text="WEB SCRAPER v0.8.0",font=("Arial",18),bg=self.bgColor,fg=self.buttonsColor)
         mainTabLabel.grid(row=0,column=0,padx=(15,0),pady=(15,15))
         
 
@@ -70,7 +73,7 @@ class Window(Data):
 
     # Creating a button for frame number one
         
-        scrapeData = Button(mainFrameOne,width=15,text="Scrape data",font=("Arial",10),bg=self.buttonsColor)
+        scrapeData = Button(mainFrameOne,width=15,text="Scrape data",font=("Arial",10),bg=self.buttonsColor,command= lambda: self.openBrowser())
         scrapeData.grid(column=1,row=3)
 
     # Creating frame number two
@@ -113,7 +116,7 @@ class Window(Data):
 
     # Copy right label creation    
 
-        copyRight = Label(self.tabMain,text="© 2023 Teo-21",bg=self.bgColor,font=("Arial",12))
+        copyRight = Label(self.tabMain,text="© 2023 Teo-21",bg=self.bgColor,font=("Arial",12),fg=self.buttonsColor)
         copyRight.grid(column=1,row=3)
 
     # Exit program button creation
