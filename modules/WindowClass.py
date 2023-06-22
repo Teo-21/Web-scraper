@@ -73,7 +73,7 @@ class Window(Data,Driver):
 
     # Creating a button for frame number one
         
-        scrapeData = Button(mainFrameOne,width=15,text="Scrape data",font=("Arial",10),bg=self.buttonsColor,command= lambda: self.openBrowser())
+        scrapeData = Button(mainFrameOne,width=15,text="Scrape data",font=("Arial",10),bg=self.buttonsColor,command= lambda: self.scrapeData())
         scrapeData.grid(column=1,row=3)
 
     # Creating frame number two
